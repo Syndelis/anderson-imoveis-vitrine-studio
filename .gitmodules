@@ -1,0 +1,3 @@
+[submodule "public/paper-sheets"]
+	path = public/paper-sheets
+	url = https://github.com/Syndelis/HTML-Sheets-of-Paper

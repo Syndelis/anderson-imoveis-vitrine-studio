@@ -1,7 +1,19 @@
-mod app;
+// mod oldapp;
 
-use app::App;
+// use oldapp::App;
+
+mod context;
+use context::MessageProvider;
+
+use yew::prelude::*;
+
+#[function_component]
+fn App() -> Html {
+    html! {
+        <MessageProvider/>
+    }
+}
 
 fn main() {
-    yew::start_app::<App>();
+    yew::Renderer::<App>::new().render();
 }
