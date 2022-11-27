@@ -1,11 +1,11 @@
 #![feature(trait_alias)]
 
-mod template_editor;
-mod template_selector;
+mod editor;
+mod selector;
 pub mod components;
 
-use template_editor::TemplateEditor;
-use template_selector::TemplateSelector;
+use editor::TemplateEditor;
+use selector::TemplateSelector;
 
 use yew::prelude::*;
 use yew_router::prelude::*;
