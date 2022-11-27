@@ -1,16 +1,44 @@
-// mod oldapp;
+#![feature(trait_alias)]
 
-// use oldapp::App;
+mod template_editor;
+mod template_selector;
+pub mod components;
 
-mod context;
-use context::MessageProvider;
+use template_editor::TemplateEditor;
+use template_selector::TemplateSelector;
 
 use yew::prelude::*;
+use yew_router::prelude::*;
+
+#[derive(Routable, PartialEq, Eq, Clone, Debug)]
+pub enum Route {
+    #[at("/template/:pane_count")]
+    TemplateEditor { pane_count: u32 },
+    #[at("/")]
+    TemplateSelector,
+    #[not_found]
+    #[at("/404")]
+    NotFound,
+}
 
 #[function_component]
 fn App() -> Html {
     html! {
-        <MessageProvider/>
+        <BrowserRouter>
+            <div> {"Before"} </div>
+            <main>
+                <Switch<Route> render={switch} />
+            </main>
+            <div> {"After"} </div>
+        </BrowserRouter>
+    }
+}
+
+fn switch(routes: Route) -> Html {
+    match routes {
+        Route::TemplateSelector => html! { <TemplateSelector/> },
+        Route::TemplateEditor { pane_count } => html! { <TemplateEditor {pane_count}/> },
+        Route::NotFound => html! { <div> {"Erro! Página não encontrada. Contate o desenvolvedor"} </div> },
     }
 }
 

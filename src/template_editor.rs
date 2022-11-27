@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
-use crate::context::{MessageContext, Page, set_page};
+use crate::Route;
+use crate::components::ButtonLink;
 
 #[derive(Properties, Debug, PartialEq)]
 pub struct TemplateEditorProps {
@@ -11,18 +12,19 @@ pub struct TemplateEditorProps {
 #[function_component]
 pub fn TemplateEditor(props: &TemplateEditorProps) -> Html {
     
-    let msg = use_context::<MessageContext>().unwrap();
     let pane_count = props.pane_count;
     
     html! {
         <div>
-            {"Template Editor - "}{props.pane_count}
+            {"Template Editor - "}{pane_count}
 
             <div>
                 {for (0..pane_count).map(|_| html_nested!(<Template/>))}
             </div>
 
-            <button type="button" onclick={set_page(Page::TemplateSelector, Box::new(msg))}>{"Voltar"}</button>
+            <ButtonLink<Route> to={Route::TemplateSelector}>
+                { "Voltar" }
+            </ButtonLink<Route>>
         </div>
     }
 }
