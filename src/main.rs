@@ -25,11 +25,9 @@ pub enum Route {
 fn App() -> Html {
     html! {
         <BrowserRouter>
-            <div> {"Before"} </div>
             <main>
                 <Switch<Route> render={switch} />
             </main>
-            <div> {"After"} </div>
         </BrowserRouter>
     }
 }

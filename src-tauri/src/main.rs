@@ -3,7 +3,9 @@
     windows_subsystem = "windows"
 )]
 
+use std::collections::HashMap;
 use std::fs::read;
+use std::sync::Mutex;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -11,8 +13,12 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+use tauri::{State, Manager};
 use tauri::api::dialog::blocking::FileDialogBuilder;
 use tauri::http::{ResponseBuilder, Uri};
+
+#[derive(Default)]
+struct ImageCache(Mutex<HashMap<String, Vec<u8>>>);
 
 #[tauri::command]
 async fn image_dialog() -> Option<String> {
@@ -34,23 +40,35 @@ async fn image_dialog() -> Option<String> {
 
 fn main() {
     tauri::Builder::default()
+        .manage(ImageCache::default())
         .invoke_handler(tauri::generate_handler![image_dialog])
         .register_uri_scheme_protocol("reqimg", move |app, request| {
             let res_not_img = ResponseBuilder::new().status(404).body(Vec::new());
             if request.method() != "GET" { return res_not_img; }
+            
             let uri = request.uri().parse::<Uri>().unwrap();
 
             let query_params = uri.query().unwrap();
             let file_path = &url_escape::decode(query_params)[2..];
 
-            println!("🚩Request: {:?}", &file_path);
+            let response = tauri::http::ResponseBuilder::new().mimetype("image/*");
 
-            if let Ok(data) = read(file_path) {
-              tauri::http::ResponseBuilder::new()
-                .mimetype("image/*")
-                .body(data)
-            } else {
-              res_not_img
+            let image_cache: State<ImageCache> = app.state();
+
+            {
+                let mut image_cache = image_cache.0.lock().unwrap();
+                if let Some(data) = image_cache.get(file_path) {
+                    response.body(data.clone())
+                }
+
+                else if let Ok(data) = read(file_path) {
+                    image_cache.insert(file_path.into(), data.clone());
+                    response.body(data)
+                }
+                
+                else {
+                    res_not_img
+                }
             }
         })
         .run(tauri::generate_context!())

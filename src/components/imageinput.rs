@@ -33,22 +33,13 @@ pub fn ImageInput() -> Html {
         })
     };
 
-    let image_html = if let Some(path) = &*current_image {
+    if let Some(path) = &*current_image {
         let host = window().unwrap().location().host().unwrap();
         let url = path.replacen("localhost", &host, 1);
-        
-        html!{
-            <img src={url}/>
-        }
+        html!(<img src={url} {onclick}/>)
     }
     else {
-        html!()
-    };
-
-    html! {
-        <>
-        <div>{image_html}</div>
-        <button type="button" {onclick}>{"Choose image"}</button>
-        </>
+        html!(<button class="image-placeholder" type="button" {onclick}>{"Escolha a Imagem"}</button>)
     }
+
 }
