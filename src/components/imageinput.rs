@@ -15,8 +15,15 @@ extern "C" {
     fn log(s: &str);
 }
 
+#[derive(Properties, Debug, PartialEq)]
+pub struct ImageInputProps {
+    #[prop_or_default]
+    pub classes: Classes,
+}
+
+
 #[function_component]
-pub fn ImageInput() -> Html {
+pub fn ImageInput(props: &ImageInputProps) -> Html {
 
     let current_image: UseStateHandle<Option<String>> = use_state(|| None);
 
@@ -36,7 +43,7 @@ pub fn ImageInput() -> Html {
     if let Some(path) = &*current_image {
         let host = window().unwrap().location().host().unwrap();
         let url = path.replacen("localhost", &host, 1);
-        html!(<img src={url} {onclick}/>)
+        html!(<img class={props.classes.clone()} src={url} {onclick}/>)
     }
     else {
         html!(<button class="image-placeholder" type="button" {onclick}>{"Escolha a Imagem"}</button>)

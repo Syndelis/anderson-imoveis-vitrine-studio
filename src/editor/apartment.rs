@@ -24,8 +24,8 @@ pub fn ApartmentTemplate(props: &ApartmentTemplateProps) -> Html {
     let pane_class = props.class_name();
 
     html! {
-        <div class="row breakable">
-            <ImageInput/>
+        <div class={classes!("row", pane_class.clone())}>
+            <ImageInput classes={classes!(pane_class.clone())}/>
             <div>
                 <h1 class={classes!("area-of-text", pane_class.clone())} contenteditable="true" data-placeholder="Título"/>
                 <p class={classes!("area-of-text", pane_class.clone())} contenteditable="true" data-placeholder="Descrição"/>
