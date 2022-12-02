@@ -1,6 +1,5 @@
 mod apartment;
 
-use web_sys::window;
 use yew::prelude::*;
 
 use crate::Route;

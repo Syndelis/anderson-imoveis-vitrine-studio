@@ -16,7 +16,7 @@ pub fn BackAndPrint(props: &BackAndPrintProps) -> Html {
     let onclick = |_| { window().unwrap().print().unwrap(); };
     
     html! {
-        <div class="row">
+        <div class="row back-and-print">
             <ButtonLink<Route> {to}>
                 { "Voltar" }
             </ButtonLink<Route>>
