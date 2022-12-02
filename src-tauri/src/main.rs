@@ -25,7 +25,17 @@ async fn image_dialog() -> Option<String> {
     });
 
     future.await.unwrap().map(|path| {
-        let mut url = String::from("reqimg://localhost/?n=");
+        let mut url = String::from(
+            if cfg!(unix) {
+                "reqimg://localhost/?n="
+            }
+            else if cfg!(windows) {
+                "https://reqimg.localhost/?n="
+            }
+            else {
+                panic!("Unsupported platform")
+            }
+        );
         url_escape::encode_query_to_string(&path, &mut url);
         println!("{}", &url);
         url
