@@ -7,8 +7,8 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "anderson-imoveis-vitrine-studio",
-    "version": "0.0.0"
+    "productName": "Anderson Imoveis - Vitrine Studio",
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
@@ -17,7 +17,7 @@
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
-      "copyright": "",
+      "copyright": "Brenno Lemos",
       "deb": {
         "depends": []
       },
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "anderson-imoveis-vitrine-studio",
+        "title": "Anderson Imoveis - Vitrine Studio",
         "width": 800
       }
     ]

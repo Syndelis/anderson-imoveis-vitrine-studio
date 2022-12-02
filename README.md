@@ -1,7 +1,11 @@
-# Tauri + Yew
+# Anderson Imóveis - Vitrine Studio
 
-This template should help get you started developing with Tauri and Yew.
+## Building
 
-## Recommended IDE Setup
+### Dependencies
 
-[VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+```sh
+$ rustup default nightly
+$ rustup target add wasm32-unknown-unknown
+$ cargo install trunk tauri-cli
+```
