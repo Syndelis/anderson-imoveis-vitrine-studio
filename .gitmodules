@@ -1,3 +1,6 @@
 [submodule "public/paper-sheets"]
 	path = public/paper-sheets
 	url = https://github.com/Syndelis/HTML-Sheets-of-Paper
+[submodule "public/normalize-css"]
+	path = public/normalize-css
+	url = https://github.com/Syndelis/normalize.css

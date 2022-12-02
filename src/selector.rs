@@ -11,8 +11,11 @@ pub fn TemplateSelector() -> Html {
     // let pane_select_onclick = |pane_count| set_page(Page::TemplateEditor { pane_count }, msg.clone());
     
     html! {
-        <div>
+        <main>
             {"Selecionar Template"}
+            <ButtonLink<Route> to={Route::Showcase}>
+                { "Lançamento" }
+            </ButtonLink<Route>>
 
             <ButtonLink<Route> to={Route::TemplateEditor { pane_count: 1 }}>
                 { "Um Imóvel" }
@@ -22,6 +25,6 @@ pub fn TemplateSelector() -> Html {
                 { "Dois Imóveis" }
             </ButtonLink<Route>>
 
-        </div>
+        </main>
     }
 }

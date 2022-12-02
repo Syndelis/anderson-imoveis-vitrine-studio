@@ -27,9 +27,16 @@ pub fn ApartmentTemplate(props: &ApartmentTemplateProps) -> Html {
         <div class={classes!("row", pane_class.clone())}>
             <ImageInput classes={classes!(pane_class.clone())}/>
             <div>
-                <h1 class={classes!("area-of-text", pane_class.clone())} contenteditable="true" data-placeholder="Título"/>
-                <p class={classes!("area-of-text", pane_class.clone())} contenteditable="true" data-placeholder="Descrição"/>
-                <h1 class={classes!("area-of-text", pane_class)} contenteditable="true" data-placeholder="Preço"/>
+                <h1 class={classes!("area-of-text", pane_class.clone())} contenteditable="true" data-placeholder="Título">
+                    { "Ed. De Paulo da Silva Sauro" }
+                    <div>{ "Frente Para o Mar" }</div>
+                </h1>
+                <p class={classes!("area-of-text", pane_class.clone())} contenteditable="true" data-placeholder="Descrição">
+                    { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat aliquet lobortis. Etiam eget dictum libero. Suspendisse eget sapien consequat, dignissim nisi vitae, ullamcorper arcu. Quisque at iaculis lorem. Duis imperdiet pulvinar nisi, at congue lorem adasd" }
+                </p>
+                <h1 class={classes!("area-of-text", pane_class)} contenteditable="true" data-placeholder="Preço">
+                    { "VALOR R$ 3.400.000,00 À VISTA" }
+                </h1>
             </div>
         </div>
     }

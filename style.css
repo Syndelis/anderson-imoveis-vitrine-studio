@@ -1,3 +1,4 @@
+@import "public/normalize-css/normalize.css";
 @import "public/paper-sheets/css/sheets-of-paper-a4.css";
 
 .logo.yew:hover {
@@ -95,7 +96,7 @@ button {
 
 @media screen {
   img, .image-placeholder {
-    aspect-ratio: 21/19;
+    aspect-ratio: 210/198;
     height: 40vh;
     border-radius: 8px;
     border: 1px solid transparent;
@@ -148,4 +149,8 @@ button {
     justify-content: center;
     text-align: center;
   }
+}
+
+.invisible {
+  display: none;
 }
