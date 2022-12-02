@@ -17,6 +17,8 @@ pub fn Showcase() -> Html {
 
                 <ImageInput classes="showcase"/>
 
+                <img src="/public/watermark.png?v=0" class="watermark"/>
+
                 <BackAndPrint to={Route::TemplateSelector}/>
             </main>
         </div>

@@ -35,6 +35,7 @@ fn App() -> Html {
         <BrowserRouter>
             <Switch<Route> render={switch} />
             <img src="/public/polygons.jpg?v=0" class="invisible"/>
+            <img src="/public/watermark.png?v=0" class="invisible"/>
         </BrowserRouter>
     }
 }

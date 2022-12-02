@@ -149,6 +149,10 @@ button {
     justify-content: center;
     text-align: center;
   }
+
+  .watermark {
+    display: none;
+  }
 }
 
 .invisible {

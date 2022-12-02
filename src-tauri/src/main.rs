@@ -7,12 +7,6 @@ use std::collections::HashMap;
 use std::fs::read;
 use std::sync::Mutex;
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 use tauri::{State, Manager};
 use tauri::api::dialog::blocking::FileDialogBuilder;
 use tauri::http::{ResponseBuilder, Uri};
@@ -20,6 +14,7 @@ use tauri::http::{ResponseBuilder, Uri};
 #[derive(Default)]
 struct ImageCache(Mutex<HashMap<String, Vec<u8>>>);
 
+// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 async fn image_dialog() -> Option<String> {
 
