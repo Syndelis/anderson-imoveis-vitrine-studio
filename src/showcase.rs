@@ -7,14 +7,8 @@ pub fn Showcase() -> Html {
     html! {
         <div class="with-bg">
             <main>
-                <h1 class="area-of-text showcase" contenteditable="true" data-placeholder="Título">
-                    { "Ed. De Paulo da Silva Sauro" }
-                </h1>
-
-                <h2 class="area-of-text showcase" contenteditable="true" data-placeholder="Subtítulo">
-                    { "Frente Para o Mar" }
-                </h2>
-
+                <h1 class="area-of-text showcase" contenteditable="true" data-placeholder="Título"/>
+                <h2 class="area-of-text showcase" contenteditable="true" data-placeholder="Subtítulo"/>
                 <ImageInput classes="showcase"/>
 
                 <img src="/public/watermark.png?v=0" class="watermark"/>
